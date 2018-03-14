@@ -52,8 +52,8 @@ this.objects = curvyCornersCol; this.applyCornersToAll = function()
 }
 }
 function curvyObject()
-{ this.box = arguments[1]; this.settings = arguments[0]; this.topContainer = null; this.bottomContainer = null; this.masterCorners = new Array(); this.contentDIV = null; var boxHeight = get_style(this.box, "height", "height"); var boxWidth = get_style(this.box, "width", "width"); var borderWidth = get_style(this.box, "borderTopWidth", "border-top-width"); var borderColour = get_style(this.box, "borderTopColor", "border-top-color"); var boxColour = get_style(this.box, "backgroundColor", "background-color"); var backgroundImage = get_style(this.box, "backgroundImage", "background-image"); var boxPosition = get_style(this.box, "position", "position"); var boxPadding = get_style(this.box, "paddingTop", "padding-top"); this.boxHeight = parseInt(((boxHeight != "" && boxHeight != "auto" && boxHeight.indexOf("%") == -1)? boxHeight.substring(0, boxHeight.indexOf("px")) : this.box.scrollHeight)); this.boxWidth = parseInt(((boxWidth != "" && boxWidth != "auto" && boxWidth.indexOf("%") == -1)? boxWidth.substring(0, boxWidth.indexOf("px")) : this.box.scrollWidth)); this.borderWidth = parseInt(((borderWidth != "" && borderWidth.indexOf("px") !== -1)? borderWidth.slice(0, borderWidth.indexOf("px")) : 0)); this.boxColour = format_colour(boxColour); this.boxPadding = parseInt(((boxPadding != "" && boxPadding.indexOf("px") !== -1)? boxPadding.slice(0, boxPadding.indexOf("px")) : 0)); this.borderColour = format_colour(borderColour); this.borderString = this.borderWidth + "px" + " solid " + this.borderColour; this.backgroundImage = ((backgroundImage != "none")? backgroundImage : ""); this.boxContent = this.box.innerHTML; if(boxPosition != "absolute") this.box.style.position = "relative"; this.box.style.padding = "0px"; if(isIE && boxWidth == "auto" && boxHeight == "auto") this.box.style.width = "100%"; if(this.settings.autoPad == true && this.boxPadding > 0)
-this.box.innerHTML = ""; this.applyCorners = function()
+{ this.box = arguments[1]; this.settings = arguments[0]; this.topContainer = null; this.bottomContainer = null; this.masterCorners = new Array(); this.contentDIV = null; var boxHeight = get_style(this.box, "height", "height"); var boxWidth = get_style(this.box, "width", "width"); var borderWidth = get_style(this.box, "borderTopWidth", "border-top-width"); var borderColour = get_style(this.box, "borderTopColor", "border-top-color"); var boxColour = get_style(this.box, "backgroundColor", "background-color"); var backgroundImage = get_style(this.box, "backgroundImage", "background-image"); var boxPosition = get_style(this.box, "position", "position"); var boxPadding = get_style(this.box, "paddingTop", "padding-top"); this.boxHeight = parseInt(((boxHeight !=[] && boxHeight != "auto" && boxHeight.indexOf("%") == -1)? boxHeight.substring(0, boxHeight.indexOf("px")) : this.box.scrollHeight)); this.boxWidth = parseInt(((boxWidth !=[] && boxWidth != "auto" && boxWidth.indexOf("%") == -1)? boxWidth.substring(0, boxWidth.indexOf("px")) : this.box.scrollWidth)); this.borderWidth = parseInt(((borderWidth !=[] && borderWidth.indexOf("px") !== -1)? borderWidth.slice(0, borderWidth.indexOf("px")) : 0)); this.boxColour = format_colour(boxColour); this.boxPadding = parseInt(((boxPadding !=[] && boxPadding.indexOf("px") !== -1)? boxPadding.slice(0, boxPadding.indexOf("px")) : 0)); this.borderColour = format_colour(borderColour); this.borderString = this.borderWidth + "px" + " solid " + this.borderColour; this.backgroundImage = ((backgroundImage != "none")? backgroundImage : ""); this.boxContent = this.box.innerHTML; if(boxPosition != "absolute") this.box.style.position = "relative"; this.box.style.padding = "0px"; if(isIE && boxWidth == "auto" && boxHeight == "auto") this.box.style.width = "100%"; if(this.settings.autoPad == true && this.boxPadding > 0)
+this.box.innerHTML =[]; this.applyCorners = function()
 { for(var t = 0; t < 2; t++)
 { switch(t)
 { case 0:
@@ -68,7 +68,7 @@ if(this.topContainer) this.box.style.borderTopWidth = "0px"; if(this.bottomConta
 { if(i > -1 < 4)
 { var cc = corners[i]; if(!this.settings[cc])
 { if(((cc == "tr" || cc == "tl") && this.topContainer != null) || ((cc == "br" || cc == "bl") && this.bottomContainer != null))
-{ var newCorner = document.createElement("DIV"); newCorner.style.position = "relative"; newCorner.style.fontSize = "1px"; newCorner.style.overflow = "hidden"; if(this.backgroundImage == "")
+{ var newCorner = document.createElement("DIV"); newCorner.style.position = "relative"; newCorner.style.fontSize = "1px"; newCorner.style.overflow = "hidden"; if(this.backgroundImage ==[])
 newCorner.style.backgroundColor = this.boxColour; else
 newCorner.style.backgroundImage = this.backgroundImage; switch(cc)
 { case "tl":
@@ -97,7 +97,7 @@ var y4 = -1; else
 var y4 = Math.ceil(Math.sqrt(Math.pow(j ,2) - Math.pow(intx, 2))); if(y1 > -1) this.drawPixel(intx, 0, this.boxColour, 100, (y1+1), newCorner, -1, this.settings[cc].radius); if(borderRadius != j)
 { for(var inty = (y1 + 1); inty < y2; inty++)
 { if(this.settings.antiAlias)
-{ if(this.backgroundImage != "")
+{ if(this.backgroundImage !=[])
 { var borderFract = (pixelFraction(intx, inty, borderRadius) * 100); if(borderFract < 30)
 { this.drawPixel(intx, inty, this.borderColour, 100, 1, newCorner, 0, this.settings[cc].radius);}
 else
@@ -162,13 +162,13 @@ var newFillerBar = document.createElement("DIV"); newFillerBar.style.position = 
 { case "t":
 if(this.topContainer)
 { if(this.settings.tl.radius && this.settings.tr.radius)
-{ newFillerBar.style.height = topMaxRadius - this.borderWidth + "px"; newFillerBar.style.marginLeft = this.settings.tl.radius - this.borderWidth + "px"; newFillerBar.style.marginRight = this.settings.tr.radius - this.borderWidth + "px"; newFillerBar.style.borderTop = this.borderString; if(this.backgroundImage != "")
+{ newFillerBar.style.height = topMaxRadius - this.borderWidth + "px"; newFillerBar.style.marginLeft = this.settings.tl.radius - this.borderWidth + "px"; newFillerBar.style.marginRight = this.settings.tr.radius - this.borderWidth + "px"; newFillerBar.style.borderTop = this.borderString; if(this.backgroundImage !=[])
 newFillerBar.style.backgroundPosition = "-" + (topMaxRadius + this.borderWidth) + "px 0px"; this.topContainer.appendChild(newFillerBar);}
 this.box.style.backgroundPosition = "0px -" + (topMaxRadius - this.borderWidth) + "px";}
 break; case "b":
 if(this.bottomContainer)
 { if(this.settings.bl.radius && this.settings.br.radius)
-{ newFillerBar.style.height = botMaxRadius - this.borderWidth + "px"; newFillerBar.style.marginLeft = this.settings.bl.radius - this.borderWidth + "px"; newFillerBar.style.marginRight = this.settings.br.radius - this.borderWidth + "px"; newFillerBar.style.borderBottom = this.borderString; if(this.backgroundImage != "")
+{ newFillerBar.style.height = botMaxRadius - this.borderWidth + "px"; newFillerBar.style.marginLeft = this.settings.bl.radius - this.borderWidth + "px"; newFillerBar.style.marginRight = this.settings.br.radius - this.borderWidth + "px"; newFillerBar.style.borderBottom = this.borderString; if(this.backgroundImage !=[])
 newFillerBar.style.backgroundPosition = "-" + (botMaxRadius + this.borderWidth) + "px -" + (this.boxHeight + (topMaxRadius + this.borderWidth)) + "px"; this.bottomContainer.appendChild(newFillerBar);}
 }
 break;}
@@ -180,7 +180,7 @@ contentContainer.style.paddingTop = topPadding + "px"; if(botMaxRadius < this.bo
 contentContainer.style.paddingBottom = botMaxRadius + "px"; contentContainer.style.paddingLeft = this.boxPadding + "px"; contentContainer.style.paddingRight = this.boxPadding + "px"; this.contentDIV = this.box.appendChild(contentContainer);}
 }
 this.drawPixel = function(intx, inty, colour, transAmount, height, newCorner, image, cornerRadius)
-{ var pixel = document.createElement("DIV"); pixel.style.height = height + "px"; pixel.style.width = "1px"; pixel.style.position = "absolute"; pixel.style.fontSize = "1px"; pixel.style.overflow = "hidden"; var topMaxRadius = Math.max(this.settings["tr"].radius, this.settings["tl"].radius); if(image == -1 && this.backgroundImage != "")
+{ var pixel = document.createElement("DIV"); pixel.style.height = height + "px"; pixel.style.width = "1px"; pixel.style.position = "absolute"; pixel.style.fontSize = "1px"; pixel.style.overflow = "hidden"; var topMaxRadius = Math.max(this.settings["tr"].radius, this.settings["tl"].radius); if(image == -1 && this.backgroundImage !=[])
 { pixel.style.backgroundImage = this.backgroundImage; pixel.style.backgroundPosition = "-" + (this.boxWidth - (cornerRadius - intx) + this.borderWidth) + "px -" + ((this.boxHeight + topMaxRadius + inty) -this.borderWidth) + "px";}
 else
 { pixel.style.backgroundColor = colour;}
@@ -202,7 +202,7 @@ else
 }
 }
 function pixelFraction(x, y, r)
-{ var pixelfraction = 0; var xvalues = new Array(1); var yvalues = new Array(1); var point = 0; var whatsides = ""; var intersect = Math.sqrt((Math.pow(r,2) - Math.pow(x,2))); if ((intersect >= y) && (intersect < (y+1)))
+{ var pixelfraction = 0; var xvalues = new Array(1); var yvalues = new Array(1); var point = 0; var whatsides =[]; var intersect = Math.sqrt((Math.pow(r,2) - Math.pow(x,2))); if ((intersect >= y) && (intersect < (y+1)))
 { whatsides = "Left"; xvalues[point] = 0; yvalues[point] = intersect - y; point = point + 1;}
 var intersect = Math.sqrt((Math.pow(r,2) - Math.pow(y+1,2))); if ((intersect >= x) && (intersect < (x+1)))
 { whatsides = whatsides + "Top"; xvalues[point] = intersect - x; yvalues[point] = 1; point = point + 1;}
@@ -249,7 +249,7 @@ else { elm['on' + evType] = fn;}
 function removeEvent(obj, evType, fn, useCapture){ if (obj.removeEventListener){ obj.removeEventListener(evType, fn, useCapture); return true;} else if (obj.detachEvent){ var r = obj.detachEvent("on"+evType, fn); return r;} else { alert("Handler could not be removed");}
 }
 function format_colour(colour)
-{ var returnColour = "#ffffff"; if(colour != "" && colour != "transparent")
+{ var returnColour = "#ffffff"; if(colour !=[] && colour != "transparent")
 { if(colour.substr(0, 3) == "rgb")
 { returnColour = rgb2Hex(colour);}
 else if(colour.length == 4)
@@ -264,7 +264,7 @@ function get_style(obj, property, propertyNS)
 { var returnVal = eval("obj.currentStyle." + property);}
 else
 { if(isSafari && obj.style.display == "none")
-{ obj.style.display = ""; var wasHidden = true;}
+{ obj.style.display =[]; var wasHidden = true;}
 var returnVal = document.defaultView.getComputedStyle(obj, '').getPropertyValue(propertyNS); if(isSafari && wasHidden)
 { obj.style.display = "none";}
 }

@@ -151,17 +151,17 @@ class OdoGraph extends Graph {
         if( $this->doshadow ) $bm += $this->shadow_width;
 
         // Calculate the top margin needed for title and subtitle
-        if( $this->title->t != "" ) {
+        if( $this->title->t !=[] ) {
         	$tm += 2;
             $tm += 1.2 * $this->title->GetFontHeight($this->img);
         }
-        if( $this->subtitle->t != "" ) {
+        if( $this->subtitle->t !=[] ) {
         	$tm += 2;
             $tm += 1.25 * $this->subtitle->GetFontHeight($this->img);
         }
 
         // Calculate the top margin needed for caption
-        if( $this->caption->t != "" ) {
+        if( $this->caption->t !=[] ) {
         	$tm += 5;
             $bm += 1.2 * $this->caption->GetTextHeight($this->img);
         }
@@ -679,7 +679,7 @@ class Odometer {
 
         // Adjust position and size for a potential odometer caption
         $capmarg = 0;
-        if( $this->caption->t != "" )
+        if( $this->caption->t !=[] )
                 $capmarg = (0.85*$this->caption->GetTextHeight($img) + $this->caption->margin);
         $this->yc -= $doautoadjust * $capmarg ;
         $this->iRadius -= $doautoadjust * $capmarg;

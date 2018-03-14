@@ -1140,7 +1140,7 @@ class Image {
     }
 
     function PushColor($color) {
-        if( $color != "" ) {
+        if( $color !=[] ) {
             $this->colorstack[$this->colorstackidx]=$this->current_color_name;
             $this->colorstack[$this->colorstackidx+1]=$this->current_color;
             $this->colorstackidx+=2;
@@ -1220,7 +1220,7 @@ class Image {
             $this->PushColor($fillcolor);
             $this->FilledArc($xc,$yc,2*$w,2*$h,$s,$e);
             $this->PopColor();
-            if( $arccolor != "" ) {
+            if( $arccolor !=[] ) {
                 $this->PushColor($arccolor);
                 // We add 2 pixels to make the Arc() better aligned with
                 // the filled arc.
@@ -2297,7 +2297,7 @@ class ImgStreamCache {
             // This is necessary if Apache user doesn't belong the
             // default group and hence can't specify group permission
             // in the previous mkdir() call
-            if( CACHE_FILE_GROUP != "" ) {
+            if( CACHE_FILE_GROUP !=[] ) {
                 $res=true;
                 $res =@chgrp($dirs[$i],CACHE_FILE_GROUP);
                 $res = @chmod($dirs[$i],0777);

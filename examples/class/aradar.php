@@ -8,9 +8,10 @@
  class RadarChart
  {
 
-     public function __construct($DATA)
+     public function __construct($DATA,$DATA1)
      {
          $this->data = $DATA;
+         $this->data1 = $DATA1;
      }
           public function aradarImg()
          {
@@ -21,12 +22,12 @@
              $MyData->setSerieDescription("Score","Application A");
              $MyData->setPalette("Score",array("R"=>0,"G"=>84,"B"=>255));
 
-             $MyData->addPoints(array("个人情况","信用情况","经济实力","稳定情况","贷款情况","工作情况","保障情况"),"Families");
+             $MyData->addPoints($this->data1,"Families");
              $MyData->setAbscissa("Families");
 
              $myPicture = new pImage(400,300,$MyData);
 
-             $myPicture->setFontProperties(array("FontName"=>"../fonts/simhei.ttf","FontSize"=>10,"R"=>0,"G"=>0,"B"=>0));
+             $myPicture->setFontProperties(array("FontName"=>dirname(dirname(__FILE__))."/fonts/simhei.ttf","FontSize"=>10,"R"=>0,"G"=>0,"B"=>0));
 
              $SplitChart = new pRadar();
 

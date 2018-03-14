@@ -297,7 +297,7 @@ class PiePlot {
         // Make sure we don't plot more values than data points
         // (in case the user added more legends than data points)
         $n = min(count($this->legends),count($this->data));
-        if( $this->legends != "" ) {
+        if( $this->legends !=[] ) {
             $this->legends = array_reverse(array_slice($this->legends,0,$n));
         }
         for( $i=$n-1; $i >= 0; --$i ) {
@@ -472,7 +472,7 @@ class PiePlot {
         }
 
         // If we have a shadow and not just drawing the labels
-        if( $this->ishadowcolor != "" && $aaoption !== 2) {
+        if( $this->ishadowcolor !=[] && $aaoption !== 2) {
             $accsum=0;
             $angle2 = $this->startangle;
             $img->SetColor($this->ishadowcolor);
@@ -1179,7 +1179,7 @@ class PiePlotC extends PiePlot {
 
         if( $this->imidsize > 0 && $aaoption !== 2 ) {
 
-            if( $this->ishadowcolor != "" ) {
+            if( $this->ishadowcolor !=[] ) {
                 $img->SetColor($this->ishadowcolor);
                 $img->FilledCircle($xc+$this->ishadowdrop,$yc+$this->ishadowdrop,
                 round($radius*$this->imidsize));
@@ -1362,7 +1362,7 @@ class PieGraph extends Graph {
         if( $this->pieaa ) {
 
             if( !$_csim ) {
-                if( $this->background_image != "" ) {
+                if( $this->background_image !=[] ) {
                     $this->StrokeFrameBackground();
                 }
                 else {
@@ -1426,7 +1426,7 @@ class PieGraph extends Graph {
         else {
 
             if( !$_csim ) {
-                if( $this->background_image != "" ) {
+                if( $this->background_image !=[] ) {
                     $this->StrokeFrameBackground();
                 }
                 else {

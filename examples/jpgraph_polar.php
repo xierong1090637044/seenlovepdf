@@ -98,7 +98,7 @@ class PolarPlot {
 
     function Legend($aGraph) {
         $color = $this->iColor ;
-        if( $this->legend != "" ) {
+        if( $this->legend !=[] ) {
             if( $this->iFillColor!='' ) {
                 $color = $this->iFillColor;
                 $aGraph->legend->Add($this->legend,$color,$this->mark,0,

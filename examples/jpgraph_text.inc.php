@@ -70,7 +70,7 @@ class Text {
     function Align($aHAlign,$aVAlign="top",$aParagraphAlign="") {
         $this->halign = $aHAlign;
         $this->valign = $aVAlign;
-        if( $aParagraphAlign != "" )
+        if( $aParagraphAlign !=[] )
             $this->paragraph_align = $aParagraphAlign;
     }
 

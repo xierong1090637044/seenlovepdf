@@ -20,9 +20,9 @@
  var rY				= 0;
  var currentStatus              = false;
  var initialized		= false;
- var currentTooltipDivID	= "";
- var currentTitle		= "";
- var currentMessage		= "";
+ var currentTooltipDivID	=[];
+ var currentTitle		=[];
+ var currentMessage		=[];
  var currentAlpha		= 0;
  var timerID			= null;
  var timerInterval		= 10;
@@ -56,7 +56,7 @@
    var element = document.createElement("DIV");
 
    element.id             = TooltipDivID;
-   element.innerHTML      = "";
+   element.innerHTML      =[];
    element.style.display = "inline-block";
    element.style.position = "absolute";
    element.style.opacity  = 0;

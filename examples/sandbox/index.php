@@ -602,7 +602,7 @@
  </tr></table>
 <script type="text/javascript">
  CurrentDiv = 1;
- URL        = "";
+ URL        =[];
  Automatic  = true;
 
  /* Initial layout */
@@ -624,7 +624,7 @@
   {
    echo "<option value='advent_light.ttf'>advent_light</option>";
    echo "<option value='Bedizen.ttf'>Bedizen</option>";
-   if ( $Default == "" )
+   if ( $Default ==[] )
     { echo "<option value='Forgotte.ttf' selected='selected'>Forgotte</option>"; }
    else
     { echo "<option value='Forgotte.ttf'>Forgotte</option>"; }

@@ -45,6 +45,7 @@ class MYPDF extends TCPDF {
 $data = array(70,80,60,50,50,40,10);
 $data1 = array(2,3,1,1);
 $data2 =array("A0","B1","C2","D3");
+$data111 = array("个人情况111","信用情况111","经济实力111","稳定情况111","贷款情况111","工作情况111","保障情况111");
 $data3 = 35;
 $BarChartData = array(150,220,300,250.6,300);
 $BarChartData1 = array(140,100,340,300,320);
@@ -56,11 +57,11 @@ $pdf->BannerPage($company,$time,$pdfname,$produceby,$bannerimg,$companyimg);
 
 $pdf->AddText("我不知道啊");
 
-$pdf->AddRadarImage(new RadarChart($data));
+$pdf->AddRadarImage(new RadarChart($data,$data111));
 $pdf->AddText("我不知道啊ddddddddddddddddddddddddddddddddddddddddddddddddddddd大
 萨达所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所");
-$pdf->AddRadarImage(new RadarChart($data));
-$pdf->AddRadarImage(new RadarChart($data));
+$pdf->AddRadarImage(new RadarChart($data,$data111));
+$pdf->AddRadarImage(new RadarChart($data,$data111));
 $pdf->AddPage();
 $pdf->AddRingImage(new RingChart($data1,$data2));
 $pdf->AddOdotutexImage(new OdometerChart($data3));

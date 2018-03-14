@@ -1530,7 +1530,7 @@ class WindroseGraph extends Graph {
         // CSIM without storing an image to disk GetCSIM must call Stroke.
         $this->iHasStroked = true;
 
-        if( $this->background_image != "" || $this->background_cflag != "" ) {
+        if( $this->background_image !=[] || $this->background_cflag !=[] ) {
             $this->StrokeFrameBackground();
         }
         else {

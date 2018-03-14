@@ -129,7 +129,7 @@
        $Entry    = str_replace("\n","",$Entry);
        $Settings = preg_split("/,/",$Entry);
 
-       if ( $Entry != "" )
+       if ( $Entry !=[] )
         {
          $PicID       = $Settings[0];
          $DBPos       = $Settings[1];
@@ -175,7 +175,7 @@
       {
        $IndexPos = ftell($Handle);
        $Entry = fgets($Handle, 4096);
-       if ( $Entry != "" )
+       if ( $Entry !=[] )
         {
          $Settings = preg_split("/,/",$Entry);
          $PicID    = $Settings[0];

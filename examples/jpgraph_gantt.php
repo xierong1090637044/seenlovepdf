@@ -694,10 +694,10 @@ class GanttGraph extends Graph {
             $height += $h;
 
             // Calculate the top margin needed for title and subtitle
-            if( $this->title->t != "" ) {
+            if( $this->title->t !=[] ) {
                 $tm += $this->title->GetFontHeight($this->img);
             }
-            if( $this->subtitle->t != "" ) {
+            if( $this->subtitle->t !=[] ) {
                 $tm += $this->subtitle->GetFontHeight($this->img);
             }
 

@@ -48,7 +48,7 @@
        if ( ObjectHeight == null ) { ObjectHeight = DefaultHeight; }
        if ( ObjectAlt == null )    { ObjectAlt    = DefaultAlt; }
 
-       if (ObjectID == "") { ObjectID = "pChart-"+i; Links[i].id = ObjectID; }
+       if (ObjectID ==[]) { ObjectID = "pChart-"+i; Links[i].id = ObjectID; }
 
        PictureCache[PictureCount]    = new Array();
        PictureCache[PictureCount][0] = ObjectID;

@@ -101,7 +101,7 @@ class ErrorLinePlot extends ErrorPlot {
     //---------------
     // PUBLIC METHODS
     function Legend($graph) {
-        if( $this->legend != "" )
+        if( $this->legend !=[] )
         $graph->legend->Add($this->legend,$this->color);
         $this->line->Legend($graph);
     }
@@ -141,7 +141,7 @@ class LineErrorPlot extends ErrorPlot {
     //---------------
     // PUBLIC METHODS
     function Legend($graph) {
-        if( $this->legend != "" )
+        if( $this->legend !=[] )
         $graph->legend->Add($this->legend,$this->color);
         $this->line->Legend($graph);
     }

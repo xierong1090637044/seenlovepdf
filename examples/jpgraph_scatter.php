@@ -99,12 +99,12 @@ class FieldPlot extends Plot {
             continue;
 
             $f = $this->iCallback;
-            if( $f != "" ) {
+            if( $f !=[] ) {
                 list($cc,$cs,$cas) = call_user_func($f,$this->coords[1][$i],$this->coords[0][$i],$this->iAngles[$i]);
                 // Fall back on global data if the callback isn't set
-                if( $cc  == "" ) $cc = $bc;
-                if( $cs  == "" ) $cs = $bs;
-                if( $cas == "" ) $cas = $bas;
+                if( $cc  ==[] ) $cc = $bc;
+                if( $cs  ==[] ) $cs = $bs;
+                if( $cas ==[] ) $cas = $bas;
                 $this->arrow->SetColor($cc);
                 $this->arrow->SetSize($cs,$cas);
             }
@@ -119,7 +119,7 @@ class FieldPlot extends Plot {
 
     // Framework function
     function Legend($aGraph) {
-        if( $this->legend != "" ) {
+        if( $this->legend !=[] ) {
             $aGraph->legend->Add($this->legend,$this->mark->fill_color,$this->mark,0,
             $this->legendcsimtarget,$this->legendcsimalt,$this->legendcsimwintarget);
         }
@@ -232,7 +232,7 @@ class ScatterPlot extends Plot {
 
     // Framework function
     function Legend($aGraph) {
-        if( $this->legend != "" ) {
+        if( $this->legend !=[] ) {
             $aGraph->legend->Add($this->legend,$this->mark->fill_color,$this->mark,0,
             $this->legendcsimtarget,$this->legendcsimalt,$this->legendcsimwintarget);
         }

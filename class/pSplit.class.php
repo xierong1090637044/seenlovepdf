@@ -47,10 +47,10 @@
      $Palette = $Values->getPalette();
 
      $LabelSerie = $Data["Abscissa"];
-     $DataSerie  = "";
+     $DataSerie  =[];
 
      foreach($Data["Series"] as $SerieName => $Value)
-      { if ( $SerieName != $LabelSerie && $DataSerie == "" ) { $DataSerie = $SerieName; } }
+      { if ( $SerieName != $LabelSerie && $DataSerie ==[] ) { $DataSerie = $SerieName; } }
 
      $DataSerieSum   = array_sum($Data["Series"][$DataSerie]["Data"]);
      $DataSerieCount = count($Data["Series"][$DataSerie]["Data"]);
@@ -94,7 +94,7 @@
 
        $Settings = array("R"=>$Palette[$Key]["R"],"G"=>$Palette[$Key]["G"],"B"=>$Palette[$Key]["B"],"Alpha"=>$Palette[$Key]["Alpha"],"NoDraw"=>TRUE,"Segments"=>$Segments,"Surrounding"=>$Surrounding);
 
-       $PolyGon = "";
+       $PolyGon =[];
 
        $Angle    = $Object->getAngle($X2,$RightY1,$X1,$LeftY1);
        $VectorX1 = cos(deg2rad($Angle+90)) * $Force + ($X2-$X1)/2 + $X1;

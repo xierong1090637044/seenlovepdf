@@ -33,7 +33,7 @@
   {
    var $pChartObject;
    var $pDataObject;
-   var $LabelPos = "" ;
+   var $LabelPos =[] ;
 
    /* Class creator */
    function pPie($Object,$pDataObject)
@@ -80,15 +80,15 @@
      $Palette = $this->pDataObject->getPalette();
 
      /* Do we have an abscissa serie defined? */
-     if ( $Data["Abscissa"] == "" ) { return(PIE_NO_ABSCISSA); }
+     if ( $Data["Abscissa"] ==[] ) { return(PIE_NO_ABSCISSA); }
 
      /* Try to find the data serie */
-     $DataSerie = "";
+     $DataSerie =[];
      foreach ($Data["Series"] as $SerieName => $SerieData)
       { if ( $SerieName != $Data["Abscissa"]) { $DataSerie = $SerieName; } }
 
      /* Do we have data to compute? */
-     if ( $DataSerie == "" ) { return(PIE_NO_DATASERIE); }
+     if ( $DataSerie ==[] ) { return(PIE_NO_DATASERIE); }
 
      /* Remove unused data */
      list($Data,$Palette) = $this->clean0Values($Data,$Palette,$DataSerie,$Data["Abscissa"]);
@@ -100,7 +100,7 @@
      if ( $SerieSum == 0 ) { return(PIE_SUMISNULL); }
 
      /* Dump the real number of data to draw */
-     $Values = "";
+     $Values =[];
      foreach ($Data["Series"][$DataSerie]["Data"] as $Key => $Value)
       { if ($Value != 0) { $Values[] = $Value; } }
 
@@ -140,7 +140,7 @@
           { $Settings["BorderR"] = $BorderR; $Settings["BorderG"] = $BorderG; $Settings["BorderB"] = $BorderB; }
         }
 
-       $Plots = "";
+       $Plots =[];
        $EndAngle = $Offset+($Value*$ScaleFactor); if ( $EndAngle > 360 ) { $EndAngle = 360; }
 
        $Angle = ($EndAngle - $Offset)/2 + $Offset;
@@ -333,15 +333,15 @@
      $Palette = $this->pDataObject->getPalette();
 
      /* Do we have an abscissa serie defined? */
-     if ( $Data["Abscissa"] == "" ) { return(PIE_NO_ABSCISSA); }
+     if ( $Data["Abscissa"] ==[] ) { return(PIE_NO_ABSCISSA); }
 
      /* Try to find the data serie */
-     $DataSerie = "";
+     $DataSerie =[];
      foreach ($Data["Series"] as $SerieName => $SerieData)
       { if ( $SerieName != $Data["Abscissa"]) { $DataSerie = $SerieName; } }
 
      /* Do we have data to compute? */
-     if ( $DataSerie == "" ) { return(PIE_NO_DATASERIE); }
+     if ( $DataSerie ==[] ) { return(PIE_NO_DATASERIE); }
 
      /* Remove unused data */
      list($Data,$Palette) = $this->clean0Values($Data,$Palette,$DataSerie,$Data["Abscissa"]);
@@ -353,7 +353,7 @@
      if ( $SerieSum == 0 ) { return(PIE_SUMISNULL); }
 
      /* Dump the real number of data to draw */
-     $Values = "";
+     $Values =[];
      foreach ($Data["Series"][$DataSerie]["Data"] as $Key => $Value)
       { if ($Value != 0) { $Values[] = $Value; } }
 
@@ -370,7 +370,7 @@
      $Step   = 360 / (2 * PI * $Radius);
      $Offset = 360; $ID = count($Values)-1;
      $Values = array_reverse($Values);
-     $Slice  = 0; $Slices = ""; $SliceColors = ""; $Visible = ""; $SliceAngle = "";
+     $Slice  = 0; $Slices =[]; $SliceColors =[]; $Visible =[]; $SliceAngle =[];
      foreach($Values as $Key => $Value)
       {
        if ( !isset($Palette[$ID]["R"]) ) { $Color = $this->pChartObject->getRandomColor(); $Palette[$ID] = $Color; $this->pDataObject->savePalette($ID,$Color); }
@@ -415,7 +415,7 @@
       {
        foreach($Slices as $SliceID => $Plots)
         {
-         $ShadowPie = "";
+         $ShadowPie =[];
          for($i=0;$i<count($Plots);$i=$i+2)
           { $ShadowPie[] = $Plots[$i]+$this->pChartObject->ShadowX; $ShadowPie[] = $Plots[$i+1]+$this->pChartObject->ShadowY; }
 
@@ -479,7 +479,7 @@
        if ( $Visible[$SliceID]["Start"] && isset($Plots[2])) /* Empty error handling */
         {
          $this->pChartObject->drawLine($Plots[2],$Plots[3],$Plots[2],$Plots[3]- $SliceHeight,array("R"=>$Settings["R"],"G"=>$Settings["G"],"B"=>$Settings["B"]));
-         $Border = "";
+         $Border =[];
          $Border[] = $Plots[0]; $Border[] = $Plots[1]; $Border[] = $Plots[0]; $Border[] = $Plots[1] - $SliceHeight;
          $Border[] = $Plots[2]; $Border[] = $Plots[3] - $SliceHeight; $Border[] = $Plots[2]; $Border[] = $Plots[3]; 
          $this->pChartObject->drawPolygon($Border,$Settings);
@@ -496,7 +496,7 @@
         {
          $this->pChartObject->drawLine($Plots[count($Plots)-2],$Plots[count($Plots)-1],$Plots[count($Plots)-2],$Plots[count($Plots)-1]- $SliceHeight,array("R"=>$Settings["R"],"G"=>$Settings["G"],"B"=>$Settings["B"]));
 
-         $Border = "";
+         $Border =[];
          $Border[] = $Plots[0]; $Border[] = $Plots[1]; $Border[] = $Plots[0]; $Border[] = $Plots[1] - $SliceHeight;
          $Border[] = $Plots[count($Plots)-2]; $Border[] = $Plots[count($Plots)-1] - $SliceHeight; $Border[] = $Plots[count($Plots)-2]; $Border[] = $Plots[count($Plots)-1]; 
          $this->pChartObject->drawPolygon($Border,$Settings);
@@ -514,7 +514,7 @@
          $Angle = $SliceAngle[$SliceID][$j/2];
          if ( $Angle < 270 && $Angle > 90 )
           {
-           $Border = "";
+           $Border =[];
            $Border[] = $Plots[$j];   $Border[] = $Plots[$j+1];
            $Border[] = $Plots[$j+2]; $Border[] = $Plots[$j+3];
            $Border[] = $Plots[$j+2]; $Border[] = $Plots[$j+3] - $SliceHeight;
@@ -571,7 +571,7 @@
        $Settings = $SliceColors[$SliceID];
        $Settings["R"]+= 20; $Settings["G"]+= 20; $Settings["B"]+= 20;
 
-       $Top = "";
+       $Top =[];
        for($j=0;$j<count($Plots);$j=$j+2) { $Top[] = $Plots[$j]; $Top[] = $Plots[$j+1]- $SliceHeight; }
        $this->pChartObject->drawPolygon($Top,$Settings);
 
@@ -727,9 +727,9 @@
      $Palette = $this->pDataObject->getPalette();
 
      /* Do we have an abscissa serie defined? */
-     if ( $Data["Abscissa"] == "" ) { return(PIE_NO_ABSCISSA); }
+     if ( $Data["Abscissa"] ==[] ) { return(PIE_NO_ABSCISSA); }
 
-     $Boundaries = ""; $Boundaries["L"] = $X; $Boundaries["T"] = $Y; $Boundaries["R"] = 0; $Boundaries["B"] = 0; $vY = $Y; $vX = $X;
+     $Boundaries =[]; $Boundaries["L"] = $X; $Boundaries["T"] = $Y; $Boundaries["R"] = 0; $Boundaries["B"] = 0; $vY = $Y; $vX = $X;
      foreach($Data["Series"][$Data["Abscissa"]]["Data"] as $Key => $Value)
       {
        $BoxArray = $this->pChartObject->getTextBox($vX+$BoxSize+4,$vY+$BoxSize/2,$FontName,$FontSize,0,$Value);
@@ -820,7 +820,7 @@
        $YTop    = $Y2 - $Height/2 - 2;
        $YBottom = $Y2 + $Height/2 + 2;
 
-       if ( $this->LabelPos != "" )
+       if ( $this->LabelPos !=[] )
         {
          $Done = FALSE;
          foreach($this->LabelPos as $Key => $Settings)
@@ -859,7 +859,7 @@
    /* Internally used to write the re-computed labels */
    function writeShiftedLabels()
     {
-     if ( $this->LabelPos == "" ) { return(0); }
+     if ( $this->LabelPos ==[] ) { return(0); }
      foreach($this->LabelPos as $Key => $Settings)
       {
        $X1 = $Settings["X1"]; $Y1 = $Settings["Y1"];
@@ -916,15 +916,15 @@
      $Palette = $this->pDataObject->getPalette();
 
      /* Do we have an abscissa serie defined? */
-     if ( $Data["Abscissa"] == "" ) { return(PIE_NO_ABSCISSA); }
+     if ( $Data["Abscissa"] ==[] ) { return(PIE_NO_ABSCISSA); }
 
      /* Try to find the data serie */
-     $DataSerie = "";
+     $DataSerie =[];
      foreach ($Data["Series"] as $SerieName => $SerieData)
       { if ( $SerieName != $Data["Abscissa"]) { $DataSerie = $SerieName; } }
 
      /* Do we have data to compute? */
-     if ( $DataSerie == "" ) { return(PIE_NO_DATASERIE); }
+     if ( $DataSerie ==[] ) { return(PIE_NO_DATASERIE); }
 
      /* Remove unused data */
      list($Data,$Palette) = $this->clean0Values($Data,$Palette,$DataSerie,$Data["Abscissa"]);
@@ -936,7 +936,7 @@
      if ( $SerieSum == 0 ) { return(PIE_SUMISNULL); }
 
      /* Dump the real number of data to draw */
-     $Values = "";
+     $Values =[];
      foreach ($Data["Series"][$DataSerie]["Data"] as $Key => $Value)
       { if ($Value != 0) { $Values[] = $Value; } }
 
@@ -976,7 +976,7 @@
           $BorderColor = $Settings;
         }
 
-       $Plots = ""; $Boundaries = ""; $AAPixels = "";
+       $Plots =[]; $Boundaries =[]; $AAPixels =[];
        $EndAngle = $Offset+($Value*$ScaleFactor); if ( $EndAngle > 360 ) { $EndAngle = 360; }
        for($i=$Offset;$i<=$EndAngle;$i=$i+$Step)
         {
@@ -1078,7 +1078,7 @@
          elseif ( $WriteValues == PIE_VALUE_NATURAL )
           $Display = $Value.$ValueSuffix;
          else
-          $Label = "";
+          $Label =[];
 
          $this->pChartObject->drawText($Xc,$Yc,$Display,array("Align"=>$Align,"R"=>$ValueR,"G"=>$ValueG,"B"=>$ValueB));
          $Offset = $EndAngle;
@@ -1128,15 +1128,15 @@
      $Palette = $this->pDataObject->getPalette();
 
      /* Do we have an abscissa serie defined? */
-     if ( $Data["Abscissa"] == "" ) { return(PIE_NO_ABSCISSA); }
+     if ( $Data["Abscissa"] ==[] ) { return(PIE_NO_ABSCISSA); }
 
      /* Try to find the data serie */
-     $DataSerie = "";
+     $DataSerie =[];
      foreach ($Data["Series"] as $SerieName => $SerieData)
       { if ( $SerieName != $Data["Abscissa"]) { $DataSerie = $SerieName; } }
 
      /* Do we have data to compute? */
-     if ( $DataSerie == "" ) { return(PIE_NO_DATASERIE); }
+     if ( $DataSerie ==[] ) { return(PIE_NO_DATASERIE); }
 
      /* Remove unused data */
      list($Data,$Palette) = $this->clean0Values($Data,$Palette,$DataSerie,$Data["Abscissa"]);
@@ -1148,7 +1148,7 @@
      if ( $SerieSum == 0 ) { return(PIE_SUMISNULL); }
 
      /* Dump the real number of data to draw */
-     $Values = "";
+     $Values =[];
      foreach ($Data["Series"][$DataSerie]["Data"] as $Key => $Value)
       { if ($Value != 0) { $Values[] = $Value; } }
 
@@ -1164,7 +1164,7 @@
      /* Draw the polygon ring elements */
      $Offset = 360; $ID = count($Values)-1;
      $Values = array_reverse($Values);
-     $Slice  = 0; $Slices = ""; $SliceColors = ""; $Visible = ""; $SliceAngle = "";
+     $Slice  = 0; $Slices =[]; $SliceColors =[]; $Visible =[]; $SliceAngle =[];
      foreach($Values as $Key => $Value)
       {
        if ( !isset($Palette[$ID]["R"]) ) { $Color = $this->pChartObject->getRandomColor(); $Palette[$ID] = $Color; $this->pDataObject->savePalette($ID,$Color); }
@@ -1284,7 +1284,7 @@
        $Settings["R"] = $Settings["R"]+$Cf; $Settings["G"] = $Settings["G"]+$Cf; $Settings["B"] = $Settings["B"]+$Cf;
 
        $Outer = TRUE; $Inner = FALSE;
-       $InnerPlotsA = ""; $InnerPlotsB = "";
+       $InnerPlotsA =[]; $InnerPlotsB =[];
        foreach($Plots["Angle"] as $ID => $Angle)
         {
          if ( $Angle == VOID )
@@ -1302,7 +1302,7 @@
           }
         }
 
-       if ( $InnerPlotsA != "" )
+       if ( $InnerPlotsA !=[] )
         { $InnerPlots = array_merge($InnerPlotsA,$this->arrayReverse($InnerPlotsB)); $this->pChartObject->drawPolygon($InnerPlots,$Settings); }
       }
 
@@ -1317,7 +1317,7 @@
 
        if ( $StartAngle < 180 )
         {
-         $Points = "";
+         $Points =[];
          $Points[] = $Plots["InX2"];
          $Points[] = $Plots["InY2"];
          $Points[] = $Plots["InX2"];
@@ -1332,7 +1332,7 @@
 
        if ( $EndAngle > 180 )
         {
-         $Points = "";
+         $Points =[];
          $Points[] = $Plots["InX1"];
          $Points[] = $Plots["InY1"];
          $Points[] = $Plots["InX1"];
@@ -1370,7 +1370,7 @@
        $Settings["R"] = $Settings["R"]+$Cf; $Settings["G"] = $Settings["G"]+$Cf; $Settings["B"] = $Settings["B"]+$Cf;
 
        $Outer = TRUE; $Inner = FALSE;
-       $OuterPlotsA = ""; $OuterPlotsB = ""; $InnerPlotsA = ""; $InnerPlotsB = "";
+       $OuterPlotsA =[]; $OuterPlotsB =[]; $InnerPlotsA =[]; $InnerPlotsB =[];
        foreach($Plots["Angle"] as $ID => $Angle)
         {
          if ( $Angle == VOID )
@@ -1387,7 +1387,7 @@
             }
           }
         }
-       if ( $OuterPlotsA != "" )
+       if ( $OuterPlotsA !=[] )
         { $OuterPlots = array_merge($OuterPlotsA,$this->arrayReverse($OuterPlotsB)); $this->pChartObject->drawPolygon($OuterPlots,$Settings); }
       }
 
@@ -1434,7 +1434,7 @@
          elseif ( $WriteValues == PIE_VALUE_NATURAL )
           $Label = $Data["Series"][$Data["Abscissa"]]["Data"][$Key];
          else
-          $Label = "";
+          $Label =[];
 
          if ( $LabelStacked )
           $this->writePieLabel($Xc,$Yc-$SliceHeight,$Label,$Angle,$Settings,TRUE,$X,$Y,$OuterRadius);
@@ -1454,9 +1454,9 @@
   /* Serialize an array */
   function arraySerialize($Data)
    {
-    $Result = "";
+    $Result =[];
     foreach($Data as $Key => $Value)
-     { if ($Result == "") { $Result = floor($Value); } else { $Result = $Result.",".floor($Value); } }
+     { if ($Result ==[]) { $Result = floor($Value); } else { $Result = $Result.",".floor($Value); } }
 
     return($Result);
    }
@@ -1464,7 +1464,7 @@
   /* Reverse an array */
   function arrayReverse($Plots)
    {
-    $Result = "";
+    $Result =[];
 
     for($i=count($Plots)-1;$i>=0;$i=$i-2)
      { $Result[] = $Plots[$i-1]; $Result[] = $Plots[$i]; }
@@ -1475,7 +1475,7 @@
   /* Remove unused series & values */
   function clean0Values($Data,$Palette,$DataSerie,$AbscissaSerie)
    {
-    $NewPalette = ""; $NewData = ""; $NewAbscissa = "";
+    $NewPalette =[]; $NewData =[]; $NewAbscissa =[];
 
     /* Remove unused series */
     foreach($Data["Series"] as $SerieName => $SerieSettings)

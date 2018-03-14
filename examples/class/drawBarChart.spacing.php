@@ -28,14 +28,14 @@ class BarChart
 
         $myPicture->setGraphArea(60,40,650,200);
 
-        $myPicture->setFontProperties(array("FontName"=>"../fonts/simhei.ttf","FontSize"=>11,"R"=>0,"G"=>0,"B"=>0));
+        $myPicture->setFontProperties(array("FontName"=>dirname(dirname(__FILE__))."/fonts/simhei.ttf","FontSize"=>11,"R"=>0,"G"=>0,"B"=>0));
         $scaleSettings = array("AxisR"=>0,"AxisG"=>0,"AxisB"=>0,"GridR"=>0,"GridG"=>0,"GridB"=>0,"DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE,"Mode"=>SCALE_MODE_START0);
         $myPicture->drawScale($scaleSettings);
 
-         $myPicture->setFontProperties(array("FontName"=>"../fonts/simhei.ttf","FontSize"=>10));
+         $myPicture->setFontProperties(array("FontName"=>dirname(dirname(__FILE__))."/fonts/simhei.ttf","FontSize"=>10));
         $myPicture->drawLegend(715,100,array("Style"=>LEGEND_ROUND,"Mode"=>LEGEND_VERTICAL,"BoxWidth"=>40,"Family"=>LEGEND_FAMILY_BOX,"R"=>113,"G"=>232,"B"=>253));
 
-        $myPicture->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>8));
+        $myPicture->setFontProperties(array("FontName"=>dirname(dirname(__FILE__))."/fonts/pf_arma_five.ttf","FontSize"=>8));
         $settings = array("Surrounding"=>0,"InnerSurrounding"=>0,"Interleave"=>2,"DisplayValues"=>TRUE);
         $myPicture->drawBarChart($settings);
 

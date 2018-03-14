@@ -27,8 +27,8 @@
    function pBarcode39($BasePath="",$EnableMOD43=FALSE)
     {
      $this->MOD43  = $EnableMOD43;
-     $this->Codes   = "";
-     $this->Reverse = "";
+     $this->Codes   =[];
+     $this->Reverse =[];
 
      $FileHandle = @fopen($BasePath."data/39.db", "r");
 
@@ -79,7 +79,7 @@
    function encode39($Value)
     {
      $this->Result = "100101101101"."0";
-     $TextString   = "";
+     $TextString   =[];
      for($i=1;$i<=strlen($Value);$i++)
       {
        $CharCode = ord($this->mid($Value,$i,1));

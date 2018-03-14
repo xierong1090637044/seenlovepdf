@@ -1998,7 +1998,7 @@ class Graph {
 
 
     // Stroke the graph
-    // $aStrokeFileName If != "" the image will be written to this file and NOT
+    // $aStrokeFileName If !=[] the image will be written to this file and NOT
     // streamed back to the browser
     function Stroke($aStrokeFileName='') {
         // Fist make a sanity check that user has specified a scale

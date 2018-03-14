@@ -25,8 +25,8 @@
    /* Class creator */
    function pBarcode128($BasePath="")
     {
-     $this->Codes   = "";
-     $this->Reverse = "";
+     $this->Codes   =[];
+     $this->Reverse =[];
 
      $FileHandle = @fopen($BasePath."data/128B.db", "r");
 
@@ -80,7 +80,7 @@
     {
      $this->Result  = "11010010000";
      $this->CRC     = 104;
-     $TextString    = "";
+     $TextString    =[];
 
      for($i=1;$i<=strlen($Value);$i++)
       {

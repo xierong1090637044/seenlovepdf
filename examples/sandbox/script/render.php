@@ -207,13 +207,13 @@
  if ( $p_template != "default" )
   $myData->loadPalette("../../../palettes/".$p_template.".color",TRUE);
 
- $Axis = "";
+ $Axis =[];
  if ( $d_serie1_enabled == "true" )
   {
    $data0  = stripTail($data0);
    $Values = preg_split("/!/",right($data0,strlen($data0)-1));
    foreach($Values as $key => $Value)
-    { if ( $Value == "" ) { $Value = VOID; } $myData->addPoints($Value,"Serie1"); }
+    { if ( $Value ==[] ) { $Value = VOID; } $myData->addPoints($Value,"Serie1"); }
 
    $myData->setSerieDescription("Serie1",$d_serie1_name);
    $myData->setSerieOnAxis("Serie1",$d_serie1_axis);
@@ -221,9 +221,9 @@
 
    if ( $Mode == "Source" )
     {
-     $Data = "";
+     $Data =[];
      foreach($Values as $key => $Value)
-      { if ( $Value == "" || $Value == VOID ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
+      { if ( $Value ==[] || $Value == VOID ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
      $Data = right($Data,strlen($Data)-1);
 
      echo '$myData->addPoints(array('.$Data.'),"Serie1");'."\r\n";
@@ -239,7 +239,7 @@
    $data1  = stripTail($data1);
    $Values = preg_split("/!/",right($data1,strlen($data1)-1));
    foreach($Values as $key => $Value)
-    { if ( $Value == "" ) { $Value = VOID; } $myData->addPoints($Value,"Serie2"); }
+    { if ( $Value ==[] ) { $Value = VOID; } $myData->addPoints($Value,"Serie2"); }
 
    $myData->setSerieDescription("Serie2",$d_serie2_name);
    $myData->setSerieOnAxis("Serie2",$d_serie2_axis);
@@ -247,9 +247,9 @@
 
    if ( $Mode == "Source" )
     {
-     $Data = "";
+     $Data =[];
      foreach($Values as $key => $Value)
-      { if ( $Value == "" ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
+      { if ( $Value ==[] ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
      $Data = right($Data,strlen($Data)-1);
 
      echo '$myData->addPoints(array('.$Data.'),"Serie2");'."\r\n";
@@ -265,7 +265,7 @@
    $data2  = stripTail($data2);
    $Values = preg_split("/!/",right($data2,strlen($data2)-1));
    foreach($Values as $key => $Value)
-    { if ( $Value == "" ) { $Value = VOID; } $myData->addPoints($Value,"Serie3"); }
+    { if ( $Value ==[] ) { $Value = VOID; } $myData->addPoints($Value,"Serie3"); }
 
    $myData->setSerieDescription("Serie3",$d_serie3_name);
    $myData->setSerieOnAxis("Serie3",$d_serie3_axis);
@@ -273,9 +273,9 @@
 
    if ( $Mode == "Source" )
     {
-     $Data = "";
+     $Data =[];
      foreach($Values as $key => $Value)
-      { if ( $Value == "" ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
+      { if ( $Value ==[] ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
      $Data = right($Data,strlen($Data)-1);
 
      echo '$myData->addPoints(array('.$Data.'),"Serie3");'."\r\n";
@@ -291,15 +291,15 @@
    $absissa = stripTail($absissa);
    $Values  = preg_split("/!/",right($absissa,strlen($absissa)-1));
    foreach($Values as $key => $Value)
-    { if ( $Value == "" ) { $Value = VOID; } $myData->addPoints($Value,"Absissa"); }
+    { if ( $Value ==[] ) { $Value = VOID; } $myData->addPoints($Value,"Absissa"); }
 
    $myData->setAbscissa("Absissa");
 
    if ( $Mode == "Source" )
     {
-     $Data = "";
+     $Data =[];
      foreach($Values as $key => $Value)
-      { if ( $Value == "" ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
+      { if ( $Value ==[] ) { $Value = "VOID"; } $Data = $Data.",".toString($Value); }
      $Data = right($Data,strlen($Data)-1);
 
      echo '$myData->addPoints(array('.$Data.'),"Absissa");'."\r\n";
@@ -516,7 +516,7 @@
   { if ( $g_shadow == "true" ) { echo '$myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>50,"G"=>50,"B"=>50,"Alpha"=>10));'."\r\n\r\n"; } }
 
  /* Chart specific parameters -------------------------------------------------------------------------------- */
- if ( $c_display_values == "true" ) { $Config = array("DisplayValues"=>TRUE); } else { $Config = ""; }
+ if ( $c_display_values == "true" ) { $Config = array("DisplayValues"=>TRUE); } else { $Config =[]; }
 
  if ( $c_family == "plot" )
   {
@@ -685,7 +685,7 @@
   {
    list($R,$G,$B) = extractColors($t_color);
 
-   $Config = "";
+   $Config =[];
    $Config["R"] = $R; $Config["G"] = $G; $Config["B"] = $B;
    $Config["Alpha"] = $t_alpha;
   
@@ -716,7 +716,7 @@
   {
    list($R,$G,$B) = extractColors($l_font_color);
 
-   $Config = "";
+   $Config =[];
    $Config["FontR"]    = $R; $Config["FontG"] = $G; $Config["FontB"] = $B;
    $Config["FontName"] = "../../../fonts/".$l_font;
    $Config["FontSize"] = $l_font_size;
@@ -754,7 +754,7 @@
 
  if ( $sl_enabled == "true" )
   {
-   $Config = "";
+   $Config =[];
    $Config["CaptionMargin"] = 10;
    $Config["CaptionWidth"]  = 10;
 
@@ -803,7 +803,7 @@
 
  function dumpArray($Name,$Values)
   {
-   if ( $Values == "" ) { return('$'.$Name.' = "";'."\r\n"); }
+   if ( $Values ==[] ) { return('$'.$Name.' =[];'."\r\n"); }
 
    $Result = '$'.$Name." = array(";
    foreach ($Values as $Key => $Value)
@@ -829,20 +829,20 @@
   {
    $Values = preg_split("/!/",right($Values,strlen($Values)-1));
 
-   $Temp = ""; $Result = "";
+   $Temp =[]; $Result =[];
    foreach($Values as $Key => $Value)
     {
-     if ( $Value == "" )
+     if ( $Value ==[] )
       { $Temp[] = VOID; }
      else
       {
-       if ( $Temp != "" && $Result != "" )
+       if ( $Temp !=[] && $Result !=[] )
         { $Result = array_merge($Result,$Temp); }
-       elseif( $Temp != "" && $Result == "" )
+       elseif( $Temp !=[] && $Result ==[] )
         { $Result = $Temp; }
 
        $Result[] = $Value;
-       $Temp = "";
+       $Temp =[];
       }
     }
 
@@ -859,7 +859,7 @@
    $handle = @fopen($FileName, "r");
    if ($handle)
     {
-     $Result = "";
+     $Result =[];
      while (($buffer = fgets($handle, 4096)) !== false)
       {
        $Values = preg_split("/,/",$buffer);

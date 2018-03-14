@@ -159,7 +159,7 @@
    d_serie2_axis	= document.getElementById("d_serie2_axis").options[document.getElementById("d_serie2_axis").selectedIndex].value;
    d_serie3_axis	= document.getElementById("d_serie3_axis").options[document.getElementById("d_serie3_axis").selectedIndex].value;
 
-   data0 = ""; data1 = ""; data2 = ""; absissa = "";
+   data0 =[]; data1 =[]; data2 =[]; absissa =[];
    for(i=0;i<8;i++)
     {
      data0 = data0 + "!" + document.getElementById("d_serie1_data"+i).value;

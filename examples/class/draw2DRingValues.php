@@ -34,7 +34,7 @@
          $Setting1 = array("StartR"=>174, "StartG"=>238, "StartB"=>255, "Alpha"=>100,"EndR"=>66, "EndG"=>216, "EndB"=>255, "Alpha"=>50);
          $myPicture->drawGradientArea(0,0,350,260,DIRECTION_HORIZONTAL,$Setting1);
 
-         $myPicture->setFontProperties(array("FontName"=>"../fonts/simhei.ttf","FontSize"=>10,"R"=>80,"G"=>80,"B"=>80));
+         $myPicture->setFontProperties(array("FontName"=>dirname(dirname(__FILE__))."/fonts/simhei.ttf","FontSize"=>10,"R"=>80,"G"=>80,"B"=>80));
 
          /* Create the pPie object */
          $PieChart = new pPie($myPicture,$MyData);
